@@ -8,7 +8,6 @@
   --border: #243049;
   --accent: #3dd6c6;
   --accent-dim: rgba(61, 214, 198, 0.1);
-  --warn: #f0a060;
   --sans: 'Segoe UI', system-ui, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
   --sidebar-w: 240px;
@@ -204,10 +203,6 @@ h1 {
   background: var(--surface);
 }
 
-.api-entry-deprecated {
-  opacity: 0.75;
-}
-
 .api-entry-head {
   display: flex;
   flex-wrap: wrap;
@@ -232,11 +227,6 @@ h1 {
   border-radius: 999px;
   background: var(--accent-dim);
   color: var(--accent);
-}
-
-.api-badge-deprecated {
-  background: rgba(240, 160, 96, 0.15);
-  color: var(--warn);
 }
 
 .api-signature {

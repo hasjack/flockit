@@ -27,19 +27,15 @@ function kindLabel(kind: ApiEntry['kind']): string {
 }
 
 function renderEntry(entry: ApiEntry): string {
-  const deprecated = entry.deprecated
-    ? '<span class="api-badge api-badge-deprecated">Deprecated</span>'
-    : ''
   const signature = entry.signature
     ? `<code class="api-signature">${esc(entry.signature)}</code>`
     : ''
 
   return `
-    <article class="api-entry${entry.deprecated ? ' api-entry-deprecated' : ''}">
+    <article class="api-entry">
       <div class="api-entry-head">
         <h3 class="api-name">${esc(entry.name)}</h3>
         <span class="api-badge">${kindLabel(entry.kind)}</span>
-        ${deprecated}
       </div>
       ${signature}
       <p class="api-desc">${esc(entry.description)}</p>

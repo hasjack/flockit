@@ -5,7 +5,6 @@ export type ApiEntry = {
   kind: ApiKind
   signature?: string
   description: string
-  deprecated?: boolean
   note?: string
 }
 
@@ -28,7 +27,6 @@ export const navSections = [
   { id: 'enums', label: 'Enums' },
   { id: 'structs', label: 'Structs' },
   { id: 'belltoy', label: 'BellToy' },
-  { id: 'deprecated', label: 'Deprecated' },
 ]
 
 export const apiSections: ApiSection[] = [
@@ -173,19 +171,6 @@ export const apiSections: ApiSection[] = [
       { name: 'UBellToyComponent::On Flipped', kind: 'delegate', signature: 'FOnBellToyFlipped', description: 'Fired when orientation flips.' },
       { name: 'bAutoAdvance', kind: 'property', signature: 'bool', description: 'Auto-step BellToy each tick (BellToyComponent).' },
       { name: 'Auto Delta Per Second', kind: 'property', signature: 'float', description: 'Auto-advance rate (BellToyComponent).' },
-    ],
-  },
-  {
-    id: 'deprecated',
-    title: 'Deprecated',
-    entries: [
-      { name: 'Get Organism Panic Pressures', kind: 'function', signature: '() → TArray<float>', description: 'Alias for Get Organism Pressures.', deprecated: true },
-      { name: 'Constrain Player Pawn', kind: 'function', signature: '(Pawn?: APawn) → bool', description: 'No-op. Player wall blocking removed — use level collision or custom Blueprint.', deprecated: true },
-      { name: 'Set Predator At World Pos', kind: 'function', signature: '→ Set Repulsor At World Pos', description: 'Predator naming alias.', deprecated: true },
-      { name: 'Set Predator Source', kind: 'function', signature: '→ Set Repulsor Source', description: 'Predator naming alias.', deprecated: true },
-      { name: 'Clear Predator', kind: 'function', signature: '→ Clear Repulsor', description: 'Predator naming alias.', deprecated: true },
-      { name: 'Get Predator Influence Radius', kind: 'function', signature: '→ Get Repulsor Influence Radius', description: 'Predator naming alias.', deprecated: true },
-      { name: 'Get Predator World Location', kind: 'function', signature: '→ Get Repulsor World Location', description: 'Predator naming alias.', deprecated: true },
     ],
   },
 ]
