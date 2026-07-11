@@ -1,7 +1,6 @@
 import './style.css'
 
-const pluginRepo = 'https://github.com/hasjack/Flocker'
-const docsRepo = 'https://github.com/hasjack/flockit'
+const demoRepo = 'https://github.com/hasjack/flockit'
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 <header class="site-header">
@@ -16,14 +15,14 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 <main class="cards">
   <section class="card">
     <h2>Documentation</h2>
-    <p>Setup guides, ISM rendering patterns, demo maps, and videos will live here.</p>
-    <a class="button" href="${docsRepo}" target="_blank" rel="noreferrer">GitHub repo</a>
+    <p>Setup guides, ISM rendering patterns, demo maps, and videos.</p>
+    <a class="button" href="${demoRepo}" target="_blank" rel="noreferrer">Demo project</a>
   </section>
 
   <section class="card">
-    <h2>Plugin source</h2>
-    <p>C++ runtime plugin, presets, migrations, and Fab packaging scripts.</p>
-    <a class="button button-secondary" href="${pluginRepo}" target="_blank" rel="noreferrer">Flocker on GitHub</a>
+    <h2>Get the plugin</h2>
+    <p>Runtime plugin for UE 5.8 — presets, multi-species, repulsor and panic modes.</p>
+    <span class="button button-secondary button-disabled">Fab — coming soon</span>
   </section>
 
   <section class="card">
@@ -38,6 +37,6 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 </main>
 
 <footer class="site-footer">
-  <p>Site deploying to <strong>flockit.xyz</strong> via GitHub Pages.</p>
+  <p><a href="https://flockit.xyz">flockit.xyz</a></p>
 </footer>
 `

@@ -2,9 +2,6 @@
 
 Unreal Engine 5.8 demo project for the [FlockIt](https://flockit.xyz) flocking plugin.
 
-- **Docs & site:** [flockit.xyz](https://flockit.xyz)
-- **Plugin source:** [Flocker](https://github.com/hasjack/Flocker) (private) — `Plugins/FlockIt/`
-
 ## Project
 
 Open `FlockIt.uproject` in UE 5.8. The demo is Blueprint-driven: `AFlockManager` actors, species presets, ISM rendering, and repulsor / panic interaction.
@@ -17,4 +14,4 @@ Open `FlockIt.uproject` in UE 5.8. The demo is Blueprint-driven: `AFlockManager`
 
 ## Plugin
 
-Install **FlockIt** from Fab or copy `Plugins/FlockIt` from Flocker into your project. See the plugin README in Flocker for API reference, ISM patterns, and performance notes.
+Install **FlockIt** from Fab. API reference, ISM patterns, and performance notes are on [flockit.xyz](https://flockit.xyz).
