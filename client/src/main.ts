@@ -108,7 +108,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     ${apiSections.map(renderApiSection).join('')}
 
     <footer class="site-footer">
-      <p><a href="https://flockit.xyz">flockit.xyz</a></p>
+      <p><a href="https://hasjack.github.io/flockit/">hasjack.github.io/flockit</a></p>
     </footer>
   </main>
 </div>

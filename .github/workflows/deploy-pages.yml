@@ -1,8 +1,8 @@
-name: Deploy flockit.xyz
+name: Deploy site
 
 on:
   push:
-    branches: [main]
+    branches: [site]
   workflow_dispatch:
 
 permissions:

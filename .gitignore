@@ -2,6 +2,12 @@
 client/node_modules/
 client/dist/
 
+# UE local output — commit on a content branch when ready
+Saved/
+Intermediate/
+DerivedDataCache/
+Binaries/
+
 # OS / editor
 .DS_Store
 *.swp

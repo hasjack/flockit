@@ -1,6 +1,6 @@
 # FlockIt
 
-Unreal Engine 5.8 demo project for the [FlockIt](https://flockit.xyz) flocking plugin.
+Unreal Engine 5.8 demo project for the FlockIt flocking plugin.
 
 ## Project
 
@@ -10,8 +10,8 @@ Open `FlockIt.uproject` in UE 5.8. The demo is Blueprint-driven: `AFlockManager`
 |------|----------|
 | `Content/` | Maps, Blueprints (`BP_FlockIt`, player, camera) |
 | `Config/` | Project settings |
-| `client/` | flockit.xyz site source (deployed via GitHub Actions) |
+| `client/` | Docs site source (deploys from the `site` branch) |
 
 ## Plugin
 
-Install **FlockIt** from Fab. API reference, ISM patterns, and performance notes are on [flockit.xyz](https://flockit.xyz).
+Install **FlockIt** from Fab.
