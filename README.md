@@ -1,9 +1,11 @@
 # flockit
 
-Public home for **FlockIt** — the Unreal Engine 5.8 flocking plugin, demo project, and documentation site.
+Public face of **FlockIt** — documentation site, demo project, and marketing for the Unreal Engine 5.8 flocking plugin.
 
 - **Site:** [flockit.xyz](https://flockit.xyz) (GitHub Pages)
-- **Plugin source:** [github.com/hasjack/Flocker](https://github.com/hasjack/Flocker) (`Plugins/FlockIt/`)
+- **Plugin C++ source (private):** [github.com/hasjack/Flocker](https://github.com/hasjack/Flocker) (`Plugins/FlockIt/`)
+
+This repo is what we show the world. The plugin implementation lives in the private **Flocker** repo.
 
 ## Repository layout
 

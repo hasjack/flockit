@@ -2,12 +2,6 @@
 client/node_modules/
 client/dist/
 
-# Unreal Engine generated / local cache
-Saved/
-Intermediate/
-DerivedDataCache/
-Binaries/
-
 # OS / editor
 .DS_Store
 *.swp
