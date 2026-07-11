@@ -1,0 +1,146 @@
+:root {
+  --text: #b8c4d9;
+  --text-h: #f4f8ff;
+  --bg: #0b1220;
+  --surface: #121b2e;
+  --border: #243049;
+  --accent: #3dd6c6;
+  --accent-dim: rgba(61, 214, 198, 0.12);
+  --sans: 'Segoe UI', system-ui, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+
+  font: 18px/1.55 var(--sans);
+  color: var(--text);
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(61, 214, 198, 0.12), transparent),
+    var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100svh;
+}
+
+#app {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 48px 24px 64px;
+}
+
+.site-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+h1 {
+  margin: 0 0 16px;
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  font-weight: 650;
+  letter-spacing: -0.03em;
+  color: var(--text-h);
+}
+
+.lede {
+  margin: 0 auto;
+  max-width: 42rem;
+  font-size: 1.1rem;
+}
+
+.cards {
+  display: grid;
+  gap: 20px;
+}
+
+@media (min-width: 720px) {
+  .cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .card:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px;
+}
+
+h2 {
+  margin: 0 0 12px;
+  font-size: 1.15rem;
+  color: var(--text-h);
+}
+
+p {
+  margin: 0 0 16px;
+}
+
+ol {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+li + li {
+  margin-top: 8px;
+}
+
+code {
+  font-family: var(--mono);
+  font-size: 0.92em;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: var(--accent-dim);
+  color: var(--accent);
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 16px;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #041018;
+  font-weight: 600;
+  text-decoration: none;
+  transition: filter 0.2s;
+}
+
+.button:hover {
+  filter: brightness(1.08);
+}
+
+.button-secondary {
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--border);
+}
+
+.button-secondary:hover {
+  background: var(--accent-dim);
+  filter: none;
+}
+
+.site-footer {
+  margin-top: 48px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #7d8aa3;
+}

@@ -1,0 +1,17 @@
+# Unreal demo project — local only until we are ready to publish assets
+unreal/
+
+# Client
+client/node_modules/
+client/dist/
+
+# Stray UE artifacts if editor writes outside unreal/
+Saved/
+Intermediate/
+DerivedDataCache/
+Binaries/
+
+# OS / editor
+.DS_Store
+*.swp
+*.swo
