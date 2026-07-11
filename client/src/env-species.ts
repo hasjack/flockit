@@ -1,0 +1,126 @@
+import './style.css'
+import { esc, renderDocsShell, renderFooter, renderSidebar } from './shared'
+import {
+  envSpeciesNav,
+  managerConfigFields,
+  simulationSettingGroups,
+  speciesFields,
+  type SettingField,
+  type SettingGroup,
+} from './settings'
+
+function renderFieldRow(field: SettingField): string {
+  const def = field.default
+    ? `<td class="settings-default"><code>${esc(field.default)}</code></td>`
+    : '<td class="settings-default">—</td>'
+
+  return `
+    <tr>
+      <td class="settings-name">${esc(field.name)}</td>
+      <td class="settings-type"><code>${esc(field.type)}</code></td>
+      ${def}
+      <td class="settings-desc">${esc(field.description)}</td>
+    </tr>
+  `
+}
+
+function renderFieldTable(fields: SettingField[]): string {
+  return `
+    <div class="settings-table-wrap">
+      <table class="settings-table">
+        <thead>
+          <tr>
+            <th>Setting</th>
+            <th>Type</th>
+            <th>Default</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${fields.map(renderFieldRow).join('')}
+        </tbody>
+      </table>
+    </div>
+  `
+}
+
+function renderGroup(group: SettingGroup): string {
+  const intro = group.intro ? `<p class="section-intro">${esc(group.intro)}</p>` : ''
+  return `
+    <section class="docs-section settings-group" id="${esc(group.id)}">
+      <h3>${esc(group.title)}</h3>
+      ${intro}
+      ${renderFieldTable(group.fields)}
+    </section>
+  `
+}
+
+document.querySelector<HTMLDivElement>('#app')!.innerHTML = renderDocsShell(
+  renderSidebar(envSpeciesNav),
+  `
+    <header class="docs-hero docs-hero-compact">
+      <img class="docs-logo docs-logo-small" src="/favicon.png" alt="FlockIt" width="64" height="64" />
+      <p class="eyebrow">AFlockManager</p>
+      <h1>Env &amp; species settings</h1>
+      <p class="lede">
+        Every simulation and per-species knob on the Flock Manager Details panel —
+        what it does, defaults, and how global env settings combine with Initial Species.
+      </p>
+    </header>
+
+    <section class="docs-section" id="simulation-settings">
+      <h2>Simulation settings</h2>
+      <p class="section-intro">
+        <strong>Simulation Settings</strong> on the manager is <code>Env</code> (<code>FSimConfig</code>).
+        These apply to the whole tank. Per-species radii and strengths live under <strong>Initial Species</strong>.
+      </p>
+      ${simulationSettingGroups.map(renderGroup).join('')}
+    </section>
+
+    <section class="docs-section" id="manager-config">
+      <h2>Manager config</h2>
+      <p class="section-intro">
+        Top-level properties on <code>AFlockManager</code> alongside Env — volume, dimensionality, spawn layout, and performance stride.
+      </p>
+      ${renderFieldTable(managerConfigFields)}
+    </section>
+
+    <section class="docs-section" id="species-fields">
+      <h2>Species fields</h2>
+      <p class="section-intro">
+        Each entry in <strong>Initial Species</strong> contains a <code>Species</code> struct (<code>FOrgType</code>)
+        plus a population <code>Count</code>. Values are copied to organisms at spawn; live edits use <code>Edit Species</code>.
+      </p>
+      ${renderFieldTable(speciesFields)}
+    </section>
+
+    <section class="docs-section" id="initial-species">
+      <h2>Initial species</h2>
+      <div class="callout">
+        <p><strong>Presets vs Custom.</strong> Changing <code>Selected Spawn Preset</code> in the editor overwrites Initial Species and Simulation Settings. Choose <strong>Custom</strong> to tune by hand. Most presets use <strong>Spread</strong> spawn layout.</p>
+        <p><strong>Count</strong> per row is the census target when you call <code>Spawn Initial Species</code> or enable <code>Auto Load Preset On Begin Play</code>.</p>
+        <p><strong>Multi-species ISMs.</strong> <code>Get Organism World Transforms</code> returns one flat array for the whole manager. Slice by species order and count from this list when driving separate meshes.</p>
+      </div>
+    </section>
+
+    <section class="docs-section" id="tuning-notes">
+      <h2>Tuning notes</h2>
+      <div class="settings-notes">
+        <article class="note-card">
+          <h3>Global × per-species</h3>
+          <p>Alignment uses <code>Align Global Scale × Alignment Strength</code>. Cohesion model and K0 are global; cohesion radius/strength are per species. Repulsor push uses global <code>Repulsor Strength × Repulsor Sensitivity</code>; panic uses <code>Panic Speed Boost × Panic Reaction</code>.</p>
+        </article>
+        <article class="note-card">
+          <h3>Quiet vs busy tanks</h3>
+          <p>Raise <code>Drag</code> and lower <code>Accel Scale</code> for drift. Raise <code>Align Saturation</code> or lower alignment strengths to loosen tight balls. <code>Min Cruise Speed</code> stops mid-water hovering.</p>
+        </article>
+        <article class="note-card">
+          <h3>Performance</h3>
+          <p><code>Force Update Stride</code> &gt; 1 skips neighbour-force updates on some frames. Start at 2–4 for 200+ organisms. Turn off debug draw when using ISMs.</p>
+        </article>
+      </div>
+    </section>
+
+    ${renderFooter()}
+  `
+)
