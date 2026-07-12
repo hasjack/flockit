@@ -7,6 +7,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
+        api: resolve(__dirname, 'api.html'),
         envSpecies: resolve(__dirname, 'env-species.html'),
       },
     },

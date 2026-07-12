@@ -12,16 +12,6 @@ export type SettingGroup = {
   fields: SettingField[]
 }
 
-export const envSpeciesNav = [
-  { href: '/', label: 'API reference' },
-  { href: '/env-species.html', label: 'Env & species', active: true },
-  { href: '#simulation-settings', label: 'Simulation settings' },
-  { href: '#manager-config', label: 'Manager config' },
-  { href: '#species-fields', label: 'Species fields' },
-  { href: '#initial-species', label: 'Initial species' },
-  { href: '#tuning-notes', label: 'Tuning notes' },
-]
-
 export const simulationSettingGroups: SettingGroup[] = [
   {
     id: 'cohesion',

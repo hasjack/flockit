@@ -1,7 +1,7 @@
 import './style.css'
-import { esc, renderDocsShell, renderFooter, renderSidebar } from './shared'
+import { envSpeciesPageSidebar } from './nav'
+import { esc, initSidebar, renderDocsShell, renderFooter, renderSidebar } from './shared'
 import {
-  envSpeciesNav,
   managerConfigFields,
   simulationSettingGroups,
   speciesFields,
@@ -11,23 +11,23 @@ import {
 
 function renderFieldRow(field: SettingField): string {
   const def = field.default
-    ? `<td class="settings-default"><code>${esc(field.default)}</code></td>`
-    : '<td class="settings-default">—</td>'
+    ? `<td class="table__default"><code>${esc(field.default)}</code></td>`
+    : '<td class="table__default">—</td>'
 
   return `
     <tr>
-      <td class="settings-name">${esc(field.name)}</td>
-      <td class="settings-type"><code>${esc(field.type)}</code></td>
+      <td class="table__name">${esc(field.name)}</td>
+      <td class="table__type"><code>${esc(field.type)}</code></td>
       ${def}
-      <td class="settings-desc">${esc(field.description)}</td>
+      <td class="table__desc">${esc(field.description)}</td>
     </tr>
   `
 }
 
 function renderFieldTable(fields: SettingField[]): string {
   return `
-    <div class="settings-table-wrap">
-      <table class="settings-table">
+    <div class="table-wrap">
+      <table class="table">
         <thead>
           <tr>
             <th>Setting</th>
@@ -47,7 +47,7 @@ function renderFieldTable(fields: SettingField[]): string {
 function renderGroup(group: SettingGroup): string {
   const intro = group.intro ? `<p class="section-intro">${esc(group.intro)}</p>` : ''
   return `
-    <section class="docs-section settings-group" id="${esc(group.id)}">
+    <section class="section section--nested" id="${esc(group.id)}">
       <h3>${esc(group.title)}</h3>
       ${intro}
       ${renderFieldTable(group.fields)}
@@ -56,10 +56,10 @@ function renderGroup(group: SettingGroup): string {
 }
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = renderDocsShell(
-  renderSidebar(envSpeciesNav),
+  renderSidebar(envSpeciesPageSidebar()),
   `
-    <header class="docs-hero docs-hero-compact">
-      <img class="docs-logo docs-logo-small" src="/favicon.png" alt="FlockIt" width="64" height="64" />
+    <header class="hero hero--compact">
+      <img class="logo logo--sm" src="/favicon.png" alt="FlockIt" width="64" height="64" />
       <p class="eyebrow">AFlockManager</p>
       <h1>Env &amp; species settings</h1>
       <p class="lede">
@@ -68,7 +68,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = renderDocsShell(
       </p>
     </header>
 
-    <section class="docs-section" id="simulation-settings">
+    <section class="section" id="simulation-settings">
       <h2>Simulation settings</h2>
       <p class="section-intro">
         <strong>Simulation Settings</strong> on the manager is <code>Env</code> (<code>FSimConfig</code>).
@@ -77,7 +77,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = renderDocsShell(
       ${simulationSettingGroups.map(renderGroup).join('')}
     </section>
 
-    <section class="docs-section" id="manager-config">
+    <section class="section" id="manager-config">
       <h2>Manager config</h2>
       <p class="section-intro">
         Top-level properties on <code>AFlockManager</code> alongside Env — volume, dimensionality, spawn layout, and performance stride.
@@ -85,7 +85,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = renderDocsShell(
       ${renderFieldTable(managerConfigFields)}
     </section>
 
-    <section class="docs-section" id="species-fields">
+    <section class="section" id="species-fields">
       <h2>Species fields</h2>
       <p class="section-intro">
         Each entry in <strong>Initial Species</strong> contains a <code>Species</code> struct (<code>FOrgType</code>)
@@ -94,7 +94,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = renderDocsShell(
       ${renderFieldTable(speciesFields)}
     </section>
 
-    <section class="docs-section" id="initial-species">
+    <section class="section" id="initial-species">
       <h2>Initial species</h2>
       <div class="callout">
         <p><strong>Presets vs Custom.</strong> Changing <code>Selected Spawn Preset</code> in the editor overwrites Initial Species and Simulation Settings. Choose <strong>Custom</strong> to tune by hand. Most presets use <strong>Spread</strong> spawn layout.</p>
@@ -103,9 +103,9 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = renderDocsShell(
       </div>
     </section>
 
-    <section class="docs-section" id="tuning-notes">
+    <section class="section" id="tuning-notes">
       <h2>Tuning notes</h2>
-      <div class="settings-notes">
+      <div class="note-grid">
         <article class="note-card">
           <h3>Global × per-species</h3>
           <p>Alignment uses <code>Align Global Scale × Alignment Strength</code>. Cohesion model and K0 are global; cohesion radius/strength are per species. Repulsor push uses global <code>Repulsor Strength × Repulsor Sensitivity</code>; panic uses <code>Panic Speed Boost × Panic Reaction</code>.</p>
@@ -124,3 +124,5 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = renderDocsShell(
     ${renderFooter()}
   `
 )
+
+initSidebar()

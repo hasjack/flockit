@@ -14,21 +14,6 @@ export type ApiSection = {
   entries: ApiEntry[]
 }
 
-export const navSections = [
-  { id: 'overview', label: 'Overview' },
-  { id: 'quick-start', label: 'Quick start' },
-  { id: 'properties', label: 'Properties' },
-  { id: 'simulation', label: 'Simulation' },
-  { id: 'presets', label: 'Presets' },
-  { id: 'data', label: 'Data' },
-  { id: 'rendering', label: 'Rendering' },
-  { id: 'repulsor', label: 'Repulsor' },
-  { id: 'bounds', label: 'Bounds' },
-  { id: 'enums', label: 'Enums' },
-  { id: 'structs', label: 'Structs' },
-  { id: 'belltoy', label: 'BellToy' },
-]
-
 export const apiSections: ApiSection[] = [
   {
     id: 'properties',
