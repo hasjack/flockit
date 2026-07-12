@@ -1,8 +1,10 @@
 import { apiSections } from './api'
 import type { SidebarItem, SidebarLink } from './shared'
 import { simulationSettingGroups } from './settings'
+import { quickStartNavLinks } from './quick-start'
+import { tutorialNavLinks } from './tutorials'
 
-type ActivePage = 'home' | 'api' | 'env-species'
+type ActivePage = 'home' | 'quick-start' | 'api' | 'env-species' | 'tutorials'
 
 function envSpeciesChildren(): SidebarLink[] {
   return [
@@ -21,6 +23,18 @@ function pagesNav(active: ActivePage): SidebarItem[] {
   const items: SidebarItem[] = [
     { type: 'link', href: '/', label: 'Home', active: active === 'home' },
   ]
+
+  if (active === 'quick-start') {
+    items.push({
+      type: 'page',
+      href: '/quick-start.html',
+      label: 'Quick start',
+      active: true,
+      children: quickStartNavLinks(),
+    })
+  } else {
+    items.push({ type: 'link', href: '/quick-start.html', label: 'Quick start' })
+  }
 
   if (active === 'api') {
     items.push({
@@ -49,11 +63,27 @@ function pagesNav(active: ActivePage): SidebarItem[] {
     items.push({ type: 'link', href: '/env-species.html', label: 'Env & species' })
   }
 
+  if (active === 'tutorials') {
+    items.push({
+      type: 'page',
+      href: '/tutorials.html',
+      label: 'Tutorials',
+      active: true,
+      children: tutorialNavLinks(),
+    })
+  } else {
+    items.push({ type: 'link', href: '/tutorials.html', label: 'Tutorials' })
+  }
+
   return items
 }
 
 export function homePageSidebar(): SidebarItem[] {
   return pagesNav('home')
+}
+
+export function quickStartPageSidebar(): SidebarItem[] {
+  return pagesNav('quick-start')
 }
 
 export function apiPageSidebar(): SidebarItem[] {
@@ -62,4 +92,8 @@ export function apiPageSidebar(): SidebarItem[] {
 
 export function envSpeciesPageSidebar(): SidebarItem[] {
   return pagesNav('env-species')
+}
+
+export function tutorialsPageSidebar(): SidebarItem[] {
+  return pagesNav('tutorials')
 }

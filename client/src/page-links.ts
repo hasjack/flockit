@@ -2,6 +2,11 @@ import { esc } from './shared'
 
 const pages = [
   {
+    href: '/quick-start.html',
+    title: 'Quick start',
+    description: 'Install FlockIt, enable the plugin, and create your first Flock Manager Blueprint.',
+  },
+  {
     href: '/api.html',
     title: 'API reference',
     description: 'Full Blueprint API — properties, functions, enums and structs for AFlockManager.',
@@ -10,6 +15,11 @@ const pages = [
     href: '/env-species.html',
     title: 'Env & species',
     description: 'Every simulation setting and per-species field on the Flock Manager Details panel.',
+  },
+  {
+    href: '/tutorials.html',
+    title: 'Tutorials',
+    description: 'Blueprint walkthroughs — worked Event Graph examples for common flock setups.',
   },
 ]
 

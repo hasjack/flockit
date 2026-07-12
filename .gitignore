@@ -1,6 +1,7 @@
 # Client
 client/node_modules/
 client/dist/
+!client/public/tutorials/*.mp4
 
 # UE local output — commit on a content branch when ready
 Saved/

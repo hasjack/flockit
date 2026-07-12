@@ -12,6 +12,7 @@ export type SidebarLink = {
   href: string
   label: string
   active?: boolean
+  children?: SidebarLink[]
 }
 
 export type SidebarGroup = {
@@ -53,6 +54,27 @@ export function renderSidebar(items: SidebarItem[]): string {
   `
 }
 
+function renderNavLink(link: SidebarLink, depth: number): string {
+  const depthClass = depth === 0 ? 'sidebar-link--nested' : 'sidebar-link--deep'
+  const cls = link.active
+    ? `sidebar-link ${depthClass} active`
+    : `sidebar-link ${depthClass}`
+  const anchor = `<a class="${cls}" href="${esc(link.href)}">${esc(link.label)}</a>`
+
+  if (!link.children?.length) return anchor
+
+  return `
+    <div class="nav-branch">
+      ${anchor}
+      <div class="nav-group__children nav-group__children--branch">${renderNavLinks(link.children, depth + 1)}</div>
+    </div>
+  `
+}
+
+function renderNavLinks(links: SidebarLink[], depth = 0): string {
+  return links.map((link) => renderNavLink(link, depth)).join('')
+}
+
 function renderSidebarItem(item: SidebarItem): string {
   if (item.type === 'link') {
     const cls = item.active ? 'sidebar-link active' : 'sidebar-link'
@@ -61,19 +83,11 @@ function renderSidebarItem(item: SidebarItem): string {
 
   if (item.type === 'page') {
     const cls = item.active ? 'sidebar-link nav-group__link active' : 'sidebar-link nav-group__link'
-    const children = item.children
-      .map((child) => {
-        const childCls = child.active
-          ? 'sidebar-link sidebar-link--nested active'
-          : 'sidebar-link sidebar-link--nested'
-        return `<a class="${childCls}" href="${esc(child.href)}">${esc(child.label)}</a>`
-      })
-      .join('')
 
     return `
       <div class="nav-group">
         <a class="${cls}" href="${esc(item.href)}">${esc(item.label)}</a>
-        <div class="nav-group__children">${children}</div>
+        <div class="nav-group__children">${renderNavLinks(item.children)}</div>
       </div>
     `
   }

@@ -7,8 +7,10 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
+        quickStart: resolve(__dirname, 'quick-start.html'),
         api: resolve(__dirname, 'api.html'),
         envSpecies: resolve(__dirname, 'env-species.html'),
+        tutorials: resolve(__dirname, 'tutorials.html'),
       },
     },
   },
