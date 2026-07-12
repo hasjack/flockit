@@ -58,7 +58,7 @@ export const quickStartSections: QuickStartSection[] = [
     steps: [
       'Set <strong>Dimension Mode</strong> and <strong>Simulation Bounds</strong> on the Details panel.',
       'Pick a <strong>Spawn Preset</strong> in <strong>Species</strong> (or <strong>Custom</strong> and edit the list by hand).',
-      'Leave <strong>Spawn On Begin Play</strong> on, or turn it off and call <strong>Spawn Species Population</strong> from the Event Graph.',
+      'Ensure <strong>Spawn On Begin Play</strong> is on.',
       'Enable <strong>Draw Debug Organisms</strong> under <strong>Simulation | Debug</strong> and press <strong>Play</strong> to see the swarm.',
     ],
     video: '/tutorials/quick-flock-example.mp4',
