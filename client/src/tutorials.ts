@@ -34,9 +34,9 @@ export const tutorials: Tutorial[] = [
   },
   {
     id: 'spawn-species',
-    title: 'Spawn Species',
+    title: 'Spawn Species (manual)',
     intro:
-      'Spawn every row in Species when play begins. Turn off <strong>Spawn On Begin Play</strong> when you want explicit control in your Blueprint.',
+      'Only when <strong>Spawn On Begin Play</strong> is off. With the bool on, the manager spawns from <strong>Species</strong> automatically in C++ — do not add this graph. Use this walkthrough when you want explicit control (e.g. spawn on a trigger, or after loading data).',
     image: '/tutorials/spawn-species.jpg',
     imageAlt:
       'Blueprint graph: Event BeginPlay drives a For Each Loop over Species, calling Spawn Species each iteration.',
@@ -46,7 +46,7 @@ export const tutorials: Tutorial[] = [
       'Insert a <strong>For Each Loop</strong> node and connect <strong>Species</strong> to its <strong>Array</strong> input.',
       'From <strong>Loop Body</strong>, call <strong>Spawn Species</strong> with <strong>Target</strong> set to <code>self</code>.',
       'Wire the loop <strong>Array Element</strong> into <strong>Species</strong>. Use <strong>Break FSpeciesSpawnConfig</strong> on the element to split <strong>Species</strong> and <strong>Count</strong> if the pins are not exposed directly.',
-      'Disable <strong>Spawn On Begin Play</strong> on the manager if you are spawning manually — otherwise both paths may run.',
+      'Turn off <strong>Spawn On Begin Play</strong> first — if both run you will spawn twice.',
     ],
   },
   {
