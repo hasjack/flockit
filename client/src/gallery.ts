@@ -7,6 +7,8 @@ const galleryImages = [
   { src: '/flockit-promo4.jpg', alt: 'FlockIt screenshot 4' },
   { src: '/flockit-promo5.jpg', alt: 'FlockIt screenshot 5' },
   { src: '/flockit-promo6.jpg', alt: 'FlockIt screenshot 6' },
+  { src: '/fab-example9.jpg', alt: 'FlockIt Fab screenshot 9' },
+  { src: '/fab-example11.jpg', alt: 'FlockIt Fab screenshot 11' },
 ]
 
 export function renderGallery(): string {
