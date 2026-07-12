@@ -16,6 +16,23 @@ export type Tutorial = {
 
 export const tutorials: Tutorial[] = [
   {
+    id: 'populate-organism-mesh',
+    title: 'Add your organism mesh',
+    intro: `The most memory-efficient way to replace debug draw is one ${ism} for the whole flock. <strong>Populate Instanced Organism Mesh</strong> writes every organism transform in a single call each frame — one draw call, one instance buffer. If each species needs a different mesh, a separate ISM per species works but multiplies draw calls and instance overhead. See <a class="text-link" href="#add-ism-instances">Add Instanced Static Mesh Instances</a> for that pattern.`,
+    image: '/tutorials/populate-ism.jpg',
+    imageAlt:
+      'Blueprint graph: Event Tick calls Populate Instanced Organism Mesh on the Flock Manager with an Instanced Static Mesh component wired in.',
+    steps: [
+      `Open your <strong>Flock Manager</strong> Blueprint and add an ${ism} component — assign your organism static mesh and material.`,
+      'Turn off <strong>Draw Debug Organisms</strong> on the manager.',
+      'Leave <strong>Spawn On Begin Play</strong> on with a <strong>Spawn Preset</strong> so organisms exist when Play starts.',
+      'In the <strong>Event Graph</strong>, add <strong>Event Tick</strong> and call <strong>Populate Instanced Organism Mesh</strong> (<strong>Target</strong> = <code>self</code>).',
+      `Wire your ${ism} component into <strong>Instance Mesh</strong>.`,
+      'Set <strong>Instance Scale</strong> to match your asset (the example uses <code>0.1</code>, <code>0.1</code>, <code>0.2</code>).',
+      'Enable <strong>World Space</strong> and <strong>Orient to Velocity</strong> if the mesh should face its movement direction — set <strong>Forward Axis</strong> to match your asset (the example uses <strong>+Z</strong>).',
+    ],
+  },
+  {
     id: 'spawn-species',
     title: 'Spawn Species',
     intro:
@@ -35,7 +52,7 @@ export const tutorials: Tutorial[] = [
   {
     id: 'add-ism-instances',
     title: 'Add Instanced Static Mesh Instances',
-    intro: `After organisms are spawned, create one ${ism} instance per organism on BeginPlay.`,
+    intro: `When each species needs its own mesh, use one ${ism} per species and add instances programmatically on BeginPlay. More flexible than a single shared mesh, but each extra ISM adds draw calls and instance-buffer cost.`,
     image: '/tutorials/example-beginplay-basic.jpg',
     imageAlt:
       'Blueprint graph: after Spawn Species, Get Organism Positions feeds a For Each Loop that Add Instance on an Instanced Static Mesh component.',
