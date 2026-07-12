@@ -124,15 +124,96 @@ export function renderFooter(): string {
   `
 }
 
+export function renderWarning(html: string): string {
+  return `
+    <div class="callout callout--warning" role="note">
+      <span class="callout__icon" aria-hidden="true">⚠</span>
+      <div class="callout__body">${html}</div>
+    </div>
+  `
+}
+
+export function renderTutorialFigure(image: string, imageAlt: string): string {
+  return `
+    <figure class="tutorial__figure">
+      <button type="button" class="tutorial__figure-btn" aria-label="View image full size: ${esc(imageAlt)}">
+        <img
+          class="tutorial__image"
+          src="${esc(image)}"
+          alt="${esc(imageAlt)}"
+          loading="lazy"
+        />
+      </button>
+    </figure>
+  `
+}
+
+function initTutorialFigures(): void {
+  let modal = document.querySelector<HTMLDivElement>('.figure-modal')
+
+  if (!modal) {
+    modal = document.createElement('div')
+    modal.className = 'figure-modal'
+    modal.hidden = true
+    modal.innerHTML = `
+      <button type="button" class="figure-modal__close" aria-label="Close">×</button>
+      <img class="figure-modal__image" alt="" />
+    `
+    document.body.append(modal)
+  }
+
+  const modalImage = modal.querySelector<HTMLImageElement>('.figure-modal__image')!
+  const closeButton = modal.querySelector<HTMLButtonElement>('.figure-modal__close')!
+
+  const closeModal = () => {
+    modal!.hidden = true
+    document.body.classList.remove('figure-modal-open')
+    modalImage.removeAttribute('src')
+    modalImage.alt = ''
+  }
+
+  const openModal = (src: string, alt: string) => {
+    modalImage.src = src
+    modalImage.alt = alt
+    modal!.hidden = false
+    document.body.classList.add('figure-modal-open')
+    closeButton.focus()
+  }
+
+  if (!modal.dataset.bound) {
+    modal.dataset.bound = 'true'
+    closeButton.addEventListener('click', closeModal)
+    modal.addEventListener('click', (event) => {
+      if (event.target === modal) closeModal()
+    })
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && !modal!.hidden) closeModal()
+    })
+  }
+
+  document.querySelectorAll<HTMLButtonElement>('.tutorial__figure-btn').forEach((button) => {
+    if (button.dataset.bound) return
+    button.dataset.bound = 'true'
+
+    button.addEventListener('click', () => {
+      const image = button.querySelector<HTMLImageElement>('.tutorial__image')
+      if (!image?.src) return
+      openModal(image.src, image.alt)
+    })
+  })
+}
+
 export function initSidebar(): void {
   document.querySelectorAll<HTMLAnchorElement>('.sidebar-summary-link').forEach((link) => {
     link.addEventListener('click', (event) => event.stopPropagation())
   })
 
   const hash = window.location.hash
-  if (!hash) return
+  if (hash) {
+    document.querySelectorAll<HTMLDetailsElement>('.sidebar-group').forEach((group) => {
+      if (group.querySelector(`a[href="${hash}"]`)) group.open = true
+    })
+  }
 
-  document.querySelectorAll<HTMLDetailsElement>('.sidebar-group').forEach((group) => {
-    if (group.querySelector(`a[href="${hash}"]`)) group.open = true
-  })
+  initTutorialFigures()
 }

@@ -485,10 +485,87 @@ h1 {
   line-height: 0;
 }
 
+.tutorial__figure-btn {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+  line-height: 0;
+}
+
+.tutorial__figure-btn:hover .tutorial__image,
+.tutorial__figure-btn:focus-visible .tutorial__image {
+  opacity: 0.92;
+}
+
+.tutorial__figure-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
 .tutorial__image {
   display: block;
   width: 100%;
   height: auto;
+}
+
+.figure-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px 24px;
+  background: rgba(0, 0, 0, 0.94);
+}
+
+.figure-modal[hidden] {
+  display: none;
+}
+
+.figure-modal__image {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.figure-modal__close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 1.75rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.figure-modal__close:hover,
+.figure-modal__close:focus-visible {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+body.figure-modal-open {
+  overflow: hidden;
+}
+
+.tutorial__part-title {
+  margin: 28px 0 12px;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.tutorial__part-title:first-of-type {
+  margin-top: 0;
 }
 
 .media__figure {
@@ -517,6 +594,28 @@ h1 {
 
 .callout strong {
   color: var(--text-h);
+}
+
+.callout--warning {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  border-color: rgba(255, 186, 73, 0.35);
+  background: rgba(255, 186, 73, 0.08);
+}
+
+.callout__icon {
+  flex-shrink: 0;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: #ffba49;
+}
+
+.callout__body {
+  flex: 1;
+  font-size: 0.95rem;
+  line-height: 1.55;
 }
 
 /* ——— Data tables ——— */

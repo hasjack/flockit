@@ -11,6 +11,8 @@ export default defineConfig({
         api: resolve(__dirname, 'api.html'),
         envSpecies: resolve(__dirname, 'env-species.html'),
         tutorials: resolve(__dirname, 'tutorials.html'),
+        addAnOrganismMesh: resolve(__dirname, 'add-an-organism-mesh.html'),
+        addMultipleOrganisms: resolve(__dirname, 'add-multiple-organisms.html'),
       },
     },
   },

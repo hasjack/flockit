@@ -1,28 +1,21 @@
 import { esc } from './shared'
-import { tutorials, type Tutorial } from './tutorials'
+import { tutorialIndexEntries } from './tutorials'
 
-function renderTutorial(tutorial: Tutorial): string {
-  const steps = tutorial.steps.map((step) => `<li>${step}</li>`).join('')
+export function renderTutorialIndex(): string {
+  const cards = tutorialIndexEntries
+    .map(
+      (entry) => `
+      <a class="card" href="${esc(entry.href)}">
+        <span class="card__title">${esc(entry.title)}</span>
+        <span class="card__desc">${esc(entry.description)}</span>
+      </a>
+    `
+    )
+    .join('')
 
   return `
-    <section class="section tutorial" id="${esc(tutorial.id)}">
-      <h2>${esc(tutorial.title)}</h2>
-      <p class="section-intro">${tutorial.intro}</p>
-      <figure class="tutorial__figure">
-        <img
-          class="tutorial__image"
-          src="${esc(tutorial.image)}"
-          alt="${esc(tutorial.imageAlt)}"
-          loading="lazy"
-        />
-      </figure>
-      <ol class="steps">
-        ${steps}
-      </ol>
-    </section>
+    <nav class="card-grid" aria-label="Tutorial walkthroughs">
+      ${cards}
+    </nav>
   `
-}
-
-export function renderTutorials(): string {
-  return tutorials.map(renderTutorial).join('')
 }

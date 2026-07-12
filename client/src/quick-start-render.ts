@@ -1,4 +1,4 @@
-import { esc } from './shared'
+import { esc, renderTutorialFigure } from './shared'
 import { quickStartSections } from './quick-start'
 
 export function renderQuickStartSections(): string {
@@ -7,16 +7,7 @@ export function renderQuickStartSections(): string {
       const intro = section.intro ? `<p class="section-intro">${section.intro}</p>` : ''
       const figure =
         section.image && section.imageAlt
-          ? `
-        <figure class="tutorial__figure">
-          <img
-            class="tutorial__image"
-            src="${esc(section.image)}"
-            alt="${esc(section.imageAlt)}"
-            loading="lazy"
-          />
-        </figure>
-      `
+          ? renderTutorialFigure(section.image, section.imageAlt)
           : ''
       const steps = section.steps.map((step) => `<li>${step}</li>`).join('')
       const video = section.video

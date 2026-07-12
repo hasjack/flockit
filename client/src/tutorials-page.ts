@@ -1,7 +1,7 @@
 import './style.css'
 import { tutorialsPageSidebar } from './nav'
 import { initSidebar, renderDocsShell, renderFooter, renderSidebar } from './shared'
-import { renderTutorials } from './tutorials-render'
+import { renderTutorialIndex } from './tutorials-render'
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = renderDocsShell(
   renderSidebar(tutorialsPageSidebar()),
@@ -11,12 +11,11 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = renderDocsShell(
       <p class="eyebrow">Blueprint walkthroughs</p>
       <h1>Tutorials</h1>
       <p class="lede">
-        Worked examples for common FlockIt setups — Event Graph patterns you can drop into your
-        Flock Manager Blueprint.
+        Worked Event Graph examples for common FlockIt setups — pick a walkthrough to get started.
       </p>
     </header>
 
-    ${renderTutorials()}
+    ${renderTutorialIndex()}
 
     ${renderFooter()}
   `

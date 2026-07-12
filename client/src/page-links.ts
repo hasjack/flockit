@@ -19,7 +19,7 @@ const pages = [
   {
     href: '/tutorials.html',
     title: 'Tutorials',
-    description: 'Blueprint walkthroughs — worked Event Graph examples for common flock setups.',
+    description: 'Blueprint walkthroughs — mesh rendering, spawning, and Event Graph patterns.',
   },
 ]
 

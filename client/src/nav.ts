@@ -4,7 +4,14 @@ import { simulationSettingGroups } from './settings'
 import { quickStartNavLinks } from './quick-start'
 import { tutorialNavLinks } from './tutorials'
 
-type ActivePage = 'home' | 'quick-start' | 'api' | 'env-species' | 'tutorials'
+type ActivePage =
+  | 'home'
+  | 'quick-start'
+  | 'api'
+  | 'env-species'
+  | 'tutorials'
+  | 'add-an-organism-mesh'
+  | 'add-multiple-organisms'
 
 function envSpeciesChildren(): SidebarLink[] {
   return [
@@ -63,13 +70,17 @@ function pagesNav(active: ActivePage): SidebarItem[] {
     items.push({ type: 'link', href: '/env-species.html', label: 'Env & species' })
   }
 
-  if (active === 'tutorials') {
+  if (
+    active === 'tutorials' ||
+    active === 'add-an-organism-mesh' ||
+    active === 'add-multiple-organisms'
+  ) {
     items.push({
       type: 'page',
       href: '/tutorials.html',
       label: 'Tutorials',
       active: true,
-      children: tutorialNavLinks(),
+      children: tutorialNavLinks(active),
     })
   } else {
     items.push({ type: 'link', href: '/tutorials.html', label: 'Tutorials' })
@@ -96,4 +107,12 @@ export function envSpeciesPageSidebar(): SidebarItem[] {
 
 export function tutorialsPageSidebar(): SidebarItem[] {
   return pagesNav('tutorials')
+}
+
+export function addAnOrganismMeshPageSidebar(): SidebarItem[] {
+  return pagesNav('add-an-organism-mesh')
+}
+
+export function addMultipleOrganismsPageSidebar(): SidebarItem[] {
+  return pagesNav('add-multiple-organisms')
 }
