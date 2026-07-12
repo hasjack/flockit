@@ -52,14 +52,17 @@ export const quickStartSections: QuickStartSection[] = [
   },
   {
     id: 'first-flock',
-    title: 'See your first flock',
+    title: 'First flock in your level',
     intro:
-      'Confirm everything is working with debug draw — no meshes or Event Graph setup required.',
+      'Once the plugin is active and your Blueprint exists, configure the manager and press Play. See <a class="text-link" href="/env-species.html">Env &amp; species</a> for field detail and <a class="text-link" href="/tutorials.html">Tutorials</a> when you are ready for meshes.',
     steps: [
-      'Select your placed <strong>Flock Manager</strong> and pick a <strong>Spawn Preset</strong> in <strong>Simulation | Species</strong>.',
-      'Under <strong>Simulation | Debug</strong>, enable <strong>Draw Debug Organisms</strong>.',
-      'Press <strong>Play</strong>. Debug spheres appear for each organism.',
+      'Set <strong>Dimension Mode</strong> and <strong>Simulation Bounds</strong> on the Details panel.',
+      'Pick a <strong>Spawn Preset</strong> in <strong>Species</strong> (or <strong>Custom</strong> and edit the list by hand).',
+      'Leave <strong>Spawn On Begin Play</strong> on, or turn it off and call <strong>Spawn Species Population</strong> from the Event Graph.',
+      'Enable <strong>Draw Debug Organisms</strong> under <strong>Simulation | Debug</strong> and press <strong>Play</strong> to see the swarm.',
     ],
+    video: '/tutorials/quick-flock-example.mp4',
+    videoTitle: 'Quick flock example walkthrough',
   },
 ]
 
