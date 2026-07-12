@@ -55,9 +55,6 @@ export const quickStartSections: QuickStartSection[] = [
     title: 'See your first flock',
     intro:
       'Confirm everything is working with debug draw — no meshes or Event Graph setup required.',
-    image: '/tutorials/spawn-species.jpg',
-    imageAlt:
-      'Flock Manager Details panel with Spawn Preset and Species settings in the Simulation category.',
     steps: [
       'Select your placed <strong>Flock Manager</strong> and pick a <strong>Spawn Preset</strong> in <strong>Simulation | Species</strong>.',
       'Under <strong>Simulation | Debug</strong>, enable <strong>Draw Debug Organisms</strong>.',
