@@ -7,6 +7,12 @@ Saved/
 Intermediate/
 DerivedDataCache/
 Binaries/
+Build/
+
+# UE editor noise
+Content/Cinematics/Takes/
+Content/__ExternalActors__/
+Content/__ExternalObjects__/
 
 # OS / editor
 .DS_Store
