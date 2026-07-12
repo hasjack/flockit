@@ -57,8 +57,8 @@ export const quickStartSections: QuickStartSection[] = [
       'Once the plugin is active and your Blueprint exists, configure the manager and drive rendering. See <a class="text-link" href="/env-species.html">Env &amp; species</a> for field detail and <a class="text-link" href="/tutorials.html">Tutorials</a> for worked Blueprint graphs.',
     steps: [
       'Set <strong>Dimension Mode</strong> and <strong>Simulation Bounds</strong> on the Details panel.',
-      'Pick a <strong>Spawn Preset</strong> or <strong>Custom</strong> + <strong>Initial Species</strong>.',
-      'Enable <strong>Auto Load Preset On Begin Play</strong>, or call <strong>Spawn Initial Species</strong> from the Event Graph.',
+      'Pick a <strong>Spawn Preset</strong> in <strong>Species</strong> (or <strong>Custom</strong> and edit the list by hand).',
+      'Leave <strong>Spawn On Begin Play</strong> on, or turn it off and call <strong>Spawn Species Population</strong> from the Event Graph.',
       'Drive rendering each tick — see the <a class="text-link" href="/tutorials.html#add-ism-instances">Add Instanced Static Mesh Instances</a> and <a class="text-link" href="/tutorials.html#update-on-tick">Update on Tick</a> tutorials.',
       'Optional: enable <strong>Track Player Pawn As Repulsor</strong> for interactive panic or repulsion.',
     ],

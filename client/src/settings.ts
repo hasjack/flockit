@@ -46,7 +46,7 @@ export const simulationSettingGroups: SettingGroup[] = [
         name: 'Align Global Scale',
         type: 'float',
         default: '1.0',
-        description: 'Global alignment multiplier. Each species Alignment Strength in Initial Species multiplies this value.',
+        description: 'Global alignment multiplier. Each species Alignment Strength in Species multiplies this value.',
       },
       {
         name: 'Align Saturation',

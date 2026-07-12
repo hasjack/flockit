@@ -19,17 +19,17 @@ export const tutorials: Tutorial[] = [
     id: 'spawn-species',
     title: 'Spawn Species',
     intro:
-      'Spawn every row in Initial Species when play begins. Use this when Auto Load Preset On Begin Play is off, or when you want explicit control over the spawn sequence in your Blueprint.',
+      'Spawn every row in Species when play begins. Turn off <strong>Spawn On Begin Play</strong> when you want explicit control in your Blueprint.',
     image: '/tutorials/spawn-species.jpg',
     imageAlt:
-      'Blueprint graph: Event BeginPlay drives a For Each Loop over Initial Species, calling Spawn Species each iteration.',
+      'Blueprint graph: Event BeginPlay drives a For Each Loop over Species, calling Spawn Species each iteration.',
     steps: [
       'Open your <strong>Flock Manager</strong> Blueprint (for example <code>BP_FlockIt</code>) and switch to the <strong>Event Graph</strong>.',
-      'Add <strong>Event BeginPlay</strong> and drag <strong>Initial Species</strong> from the Details panel into the graph.',
-      'Insert a <strong>For Each Loop</strong> node and connect <strong>Initial Species</strong> to its <strong>Array</strong> input.',
+      'Add <strong>Event BeginPlay</strong> and drag <strong>Species</strong> from the Details panel into the graph.',
+      'Insert a <strong>For Each Loop</strong> node and connect <strong>Species</strong> to its <strong>Array</strong> input.',
       'From <strong>Loop Body</strong>, call <strong>Spawn Species</strong> with <strong>Target</strong> set to <code>self</code>.',
       'Wire the loop <strong>Array Element</strong> into <strong>Species</strong>. Use <strong>Break FSpeciesSpawnConfig</strong> on the element to split <strong>Species</strong> and <strong>Count</strong> if the pins are not exposed directly.',
-      'Disable <strong>Auto Load Preset On Begin Play</strong> if you are spawning manually — otherwise both paths may run.',
+      'Disable <strong>Spawn On Begin Play</strong> on the manager if you are spawning manually — otherwise both paths may run.',
     ],
   },
   {

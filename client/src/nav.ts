@@ -14,7 +14,7 @@ function envSpeciesChildren(): SidebarLink[] {
     })),
     { href: '#manager-config', label: 'Manager config' },
     { href: '#species-fields', label: 'Species fields' },
-    { href: '#initial-species', label: 'Initial species' },
+    { href: '#species', label: 'Species' },
     { href: '#tuning-notes', label: 'Tuning notes' },
   ]
 }

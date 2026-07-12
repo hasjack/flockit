@@ -64,7 +64,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = renderDocsShell(
       <h1>Env &amp; species settings</h1>
       <p class="lede">
         Every simulation and per-species knob on the Flock Manager Details panel —
-        what it does, defaults, and how global env settings combine with Initial Species.
+        what it does, defaults, and how global env settings combine with Species.
       </p>
     </header>
 
@@ -72,7 +72,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = renderDocsShell(
       <h2>Simulation settings</h2>
       <p class="section-intro">
         <strong>Simulation Settings</strong> on the manager is <code>Env</code> (<code>FSimConfig</code>).
-        These apply to the whole tank. Per-species radii and strengths live under <strong>Initial Species</strong>.
+        These apply to the whole tank. Per-species radii and strengths live under <strong>Species</strong>.
       </p>
       ${simulationSettingGroups.map(renderGroup).join('')}
     </section>
@@ -88,17 +88,17 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = renderDocsShell(
     <section class="section" id="species-fields">
       <h2>Species fields</h2>
       <p class="section-intro">
-        Each entry in <strong>Initial Species</strong> contains a <code>Species</code> struct (<code>FOrgType</code>)
+        Each entry in <strong>Species</strong> contains a <code>Species</code> struct (<code>FOrgType</code>)
         plus a population <code>Count</code>. Values are copied to organisms at spawn; live edits use <code>Edit Species</code>.
       </p>
       ${renderFieldTable(speciesFields)}
     </section>
 
-    <section class="section" id="initial-species">
-      <h2>Initial species</h2>
+    <section class="section" id="species">
+      <h2>Species</h2>
       <div class="callout">
-        <p><strong>Presets vs Custom.</strong> Changing <code>Selected Spawn Preset</code> in the editor overwrites Initial Species and Simulation Settings. Choose <strong>Custom</strong> to tune by hand. Most presets use <strong>Spread</strong> spawn layout.</p>
-        <p><strong>Count</strong> per row is the census target when you call <code>Spawn Initial Species</code> or enable <code>Auto Load Preset On Begin Play</code>.</p>
+        <p><strong>Presets vs Custom.</strong> Changing <code>Selected Spawn Preset</code> in the editor overwrites Species and Simulation Settings. Choose <strong>Custom</strong> to tune by hand. Most presets use <strong>Spread</strong> spawn layout.</p>
+        <p><strong>Count</strong> per row is the census target when <strong>Spawn On Begin Play</strong> runs or when you call <code>Spawn Species Population</code>.</p>
         <p><strong>Multi-species ISMs.</strong> <code>Get Organism World Transforms</code> returns one flat array for the whole manager. Slice by species order and count from this list when driving separate meshes.</p>
       </div>
     </section>
