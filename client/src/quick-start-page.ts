@@ -11,7 +11,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = renderDocsShell(
       <p class="eyebrow">Getting started</p>
       <h1>Quick start</h1>
       <p class="lede">
-        Install and enable FlockIt, create a Flock Manager Blueprint, and place your first flock in a level.
+        See a flock in the viewport using debug draw — nothing else required.
       </p>
     </header>
 

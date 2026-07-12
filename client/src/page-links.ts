@@ -4,7 +4,7 @@ const pages = [
   {
     href: '/quick-start.html',
     title: 'Quick start',
-    description: 'Install FlockIt, enable the plugin, and create your first Flock Manager Blueprint.',
+    description: 'See a flock in debug — preset, Draw Debug Organisms, Play.',
   },
   {
     href: '/api.html',
