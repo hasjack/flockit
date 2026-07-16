@@ -112,7 +112,7 @@ export const apiSections: ApiSection[] = [
       { name: 'ERepulsorEffectMode', kind: 'enum', signature: 'Off · Repulsion · Panic', description: 'Repulsor threat response mode.' },
       { name: 'ESpawnLayout', kind: 'enum', signature: 'Spread · Burst · Flock', description: 'Initial organism placement pattern.' },
       { name: 'EFlockMeshForwardAxis', kind: 'enum', signature: '+X · +Y · +Z · −X · −Y · −Z', description: 'Mesh forward axis for velocity orientation.' },
-      { name: 'EFlockItSpawnPreset', kind: 'enum', signature: 'Empty · SoloSwarm · TwinMix · QuietDrift · QuickTank · BusyTank · SpeciesMix · RepulsorPlayground · PanicShowcase · Custom', description: 'Built-in census and simulation presets.' },
+      { name: 'EFlockItSpawnPreset', kind: 'enum', signature: 'Empty · Solo School · TwinMix · QuietDrift · QuickTank · BusyTank · SpeciesMix · RepulsorPlayground · PanicShowcase · Custom', description: 'Built-in census and simulation presets.' },
       { name: 'EBellToyOrientation', kind: 'enum', signature: 'Positive · Negative', description: 'BellToy progress-state orientation sign.' },
     ],
   },
