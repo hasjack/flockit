@@ -1,55 +1,32 @@
 # FlockIt
 
-Demo project and documentation for the [FlockIt](https://flockit.xyz/) Unreal Engine flocking plugin.
+Demo project for the [FlockIt](https://flockit.xyz/) Unreal Engine flocking plugin.
 
-**Live docs:** [https://flockit.xyz/](https://flockit.xyz/)
+**Docs:** [https://flockit.xyz/](https://flockit.xyz/)
 
-## Repository layout
+## Requirements
 
-| Path | Description |
-|------|-------------|
-| `Content/` | Demo maps and Blueprints |
-| `Config/` | Unreal project settings |
-| `client/` | Documentation site (Vite + TypeScript) |
-| `docker-compose.yml` | Container setup for the docs site |
+- **Unreal Engine 5.8**
+- The **FlockIt** plugin ([Fab](https://www.fab.com/) or installed under this project’s `Plugins/` folder)
 
-## Unreal project
+## Getting started
 
-Requires **Unreal Engine 5.8** and the **FlockIt** plugin (from [Fab](https://www.fab.com/) or your project’s `Plugins/` folder).
+1. Open `FlockIt.uproject` in Unreal Engine 5.8.
+2. Enable the FlockIt plugin if prompted, then restart the editor.
+3. Open a map under `Content/` (or `Content/Maps/`).
+4. Press **Play**.
 
-1. Open `FlockIt.uproject` in the editor.
-2. Enable the FlockIt plugin if prompted, then restart.
-3. Open a map under `Content/` and press Play.
+## What’s in the project
 
-The demo is Blueprint-driven: place or open a Flock Manager, choose a spawn preset, and drive meshes with **Populate Instanced Organism Mesh** (see the docs site tutorials).
+The demo is Blueprint-driven around **Flock Manager** (`AFlockManager`):
 
-## Documentation site
+- Place or open a manager Blueprint (for example `BP_FlockIt`).
+- Choose a **Spawn Preset** (or **Custom** and edit **Species**).
+- Leave **Spawn On Begin Play** on, or spawn from the Event Graph.
+- Drive organism meshes with **Populate Instanced Organism Mesh** on an Instanced Static Mesh component each tick.
 
-Source lives in `client/`. The site is a static multipage build served by nginx in production.
-
-### Development
-
-```bash
-cd client
-npm install
-npm run dev
-```
-
-### Production (Docker)
-
-From the repository root:
-
-```bash
-docker compose up --build -d
-```
-
-The site is available at [http://localhost:8088](http://localhost:8088) by default. Override the host port if needed:
-
-```bash
-FLOCKIT_PORT=8090 docker compose up --build -d
-```
+For full API, settings, and step-by-step tutorials, see [flockit.xyz](https://flockit.xyz/).
 
 ## Support
 
-- Docs: [https://flockit.xyz/](https://flockit.xyz/)
-- Issues: [github.com/hasjack/flockit/issues](https://github.com/hasjack/flockit/issues)
+[github.com/hasjack/flockit/issues](https://github.com/hasjack/flockit/issues)
