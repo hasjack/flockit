@@ -119,7 +119,7 @@ export function renderDocsShell(sidebar: string, main: string): string {
 export function renderFooter(): string {
   return `
     <footer class="footer">
-      <p><a href="https://hasjack.github.io/flockit/">hasjack.github.io/flockit</a></p>
+      <p><a href="${demoRepo}" target="_blank" rel="noreferrer">github.com/hasjack/flockit</a></p>
     </footer>
   `
 }
