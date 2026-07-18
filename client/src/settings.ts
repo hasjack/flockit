@@ -94,13 +94,15 @@ export const simulationSettingGroups: SettingGroup[] = [
   },
   {
     id: 'walls',
-    title: 'Soft walls',
+    title: 'Soft walls (organisms)',
+    intro:
+      'Soft forces that keep organisms inside Simulation Bounds. These do not move the player — use Walls Block Player under Manager config for pawn constraints.',
     fields: [
       {
         name: 'Wall Margin',
         type: 'float',
         default: '40.0',
-        description: 'Inset from Simulation Bounds where wall repulsion begins. Smaller margin = swim closer to edges.',
+        description: 'Inset from Simulation Bounds where organism wall repulsion begins. Smaller margin = swim closer to edges.',
       },
       {
         name: 'Wall Strength',
@@ -142,6 +144,61 @@ export const managerConfigFields: SettingField[] = [
     type: 'float',
     default: '28.0',
     description: 'Tightness of the spawn cluster when Spawn Layout is Flock.',
+  },
+  {
+    name: 'Repulsor Effect',
+    type: 'ERepulsorEffectMode',
+    default: 'Repulsion',
+    description: 'Repulsion (push), Panic (fear push + BellToy scatter + speed burst), or Off (track only).',
+  },
+  {
+    name: 'Repulsor Radius',
+    type: 'float',
+    default: '100.0',
+    description: 'Sim-space threat zone radius. Also sizes the repulsor debug sphere.',
+  },
+  {
+    name: 'Repulsor Strength',
+    type: 'float',
+    default: '10.0',
+    description: 'Repulsion: push strength. Panic: fear-push strength. Scaled per species by Repulsor Sensitivity.',
+  },
+  {
+    name: 'Panic Speed Boost',
+    type: 'float',
+    default: '2.2',
+    description: 'Panic mode only. Added to Max Speed at full pressure. Scaled by Panic Reaction.',
+  },
+  {
+    name: 'Panic Spook Duration',
+    type: 'float',
+    default: '4.0',
+    description: 'Panic mode only. Seconds scatter effects linger after leaving the repulsor zone.',
+  },
+  {
+    name: 'Track Player Pawn As Repulsor',
+    type: 'bool',
+    default: 'false',
+    description: 'Treat the first local player pawn as the repulsor when within Repulsor Radius of simulation bounds.',
+  },
+  {
+    name: 'Walls Block Player',
+    type: 'EPlayerBoundsMode',
+    default: 'Off',
+    description:
+      'Hard constraint on the player pawn (not organism soft walls). Keep Inside latches once the pawn enters bounds; Keep Outside ejects to the nearest exterior face. Panic Showcase enables Keep Inside.',
+  },
+  {
+    name: 'Player Wall Margin',
+    type: 'float',
+    default: '24.0',
+    description: 'Inset from Simulation Bounds when Walls Block Player is on. Independent of Env Wall Margin.',
+  },
+  {
+    name: 'Player Bounds Pawn',
+    type: 'APawn*',
+    default: 'null',
+    description: 'Optional pawn to constrain. Empty uses the first local player pawn.',
   },
 ]
 
@@ -220,7 +277,8 @@ export const speciesFields: SettingField[] = [
     name: 'Panic Reaction',
     type: 'float',
     default: '1.0',
-    description: '0 = calm under threat. 1 = full panic sprint and pressure at the repulsor centre. Independent of repulsion mode.',
+    description:
+      '0 = calm under threat. 1 = full panic speed boost and pressure at the repulsor centre. Works with Panic mode (and still scales pressure-driven visuals when using Repulsion).',
   },
   {
     name: 'Debug Color',

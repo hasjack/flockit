@@ -80,7 +80,8 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = renderDocsShell(
     <section class="section" id="manager-config">
       <h2>Manager config</h2>
       <p class="section-intro">
-        Top-level properties on <code>AFlockManager</code> alongside Env — volume, dimensionality, spawn layout, and performance stride.
+        Top-level properties on <code>AFlockManager</code> alongside Env — volume, dimensionality, spawn layout,
+        repulsor / panic, and optional player bounds (Walls Block Player).
       </p>
       ${renderFieldTable(managerConfigFields)}
     </section>
@@ -98,6 +99,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = renderDocsShell(
       <h2>Species</h2>
       <div class="callout">
         <p><strong>Presets vs Custom.</strong> Changing <code>Selected Spawn Preset</code> in the editor overwrites Species and Simulation Settings. Choose <strong>Custom</strong> to tune by hand. Most presets use <strong>Spread</strong> spawn layout.</p>
+        <p><strong>Panic Showcase</strong> also applies panic repulsor settings and turns on <strong>Walls Block Player → Keep Inside</strong> so the pawn stays in the tank while the school scatters.</p>
         <p><strong>Count</strong> per row is the census target when <strong>Spawn On Begin Play</strong> runs or when you call <code>Spawn Species Population</code>.</p>
         <p><strong>Multi-species ISMs.</strong> <code>Get Organism World Transforms</code> returns one flat array for the whole manager. Slice by species order and count from this list when driving separate meshes.</p>
       </div>
@@ -108,7 +110,11 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = renderDocsShell(
       <div class="note-grid">
         <article class="note-card">
           <h3>Global × per-species</h3>
-          <p>Alignment uses <code>Align Global Scale × Alignment Strength</code>. Cohesion model and K0 are global; cohesion radius/strength are per species. Repulsor push uses global <code>Repulsor Strength × Repulsor Sensitivity</code>; panic uses <code>Panic Speed Boost × Panic Reaction</code>.</p>
+          <p>Alignment uses <code>Align Global Scale × Alignment Strength</code>. Cohesion model and K0 are global; cohesion radius/strength are per species. Repulsor push uses global <code>Repulsor Strength × Repulsor Sensitivity</code>; panic speed uses <code>Panic Speed Boost × Panic Reaction</code>. <code>Panic Spook Duration</code> controls how long scatter effects linger after leaving the zone.</p>
+        </article>
+        <article class="note-card">
+          <h3>Organism walls vs player walls</h3>
+          <p><code>Env → Wall Margin / Wall Strength</code> are soft forces on organisms only. <code>Walls Block Player</code> is a hard pawn constraint (Keep Inside / Keep Outside) with its own <code>Player Wall Margin</code>. Use <code>Is World Location Inside Simulation Bounds</code> to query without moving anything; call <code>Constrain Player Pawn</code> if you need a one-shot apply outside the automatic tick.</p>
         </article>
         <article class="note-card">
           <h3>Quiet vs busy tanks</h3>
