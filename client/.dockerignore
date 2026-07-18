@@ -1,0 +1,9 @@
+node_modules
+dist
+.git
+.gitignore
+.DS_Store
+*.md
+Dockerfile*
+docker-compose*
+nginx.conf.bak
