@@ -26,13 +26,13 @@ Static multi-page Vite site, served by nginx. Layout leaves room for a future lo
 ```bash
 # from repo root
 docker compose up --build -d
-# open http://localhost:8080
+# open http://localhost:8088
 ```
 
-Port override:
+Port override (default **8088** — avoid **8080**, used by `has-client` on the VPS):
 
 ```bash
-FLOCKIT_PORT=3000 docker compose up --build -d
+FLOCKIT_PORT=8090 docker compose up --build -d
 ```
 
 Dev without Docker (hot reload):
@@ -44,7 +44,7 @@ cd client && npm install && npm run dev
 ### Production sketch
 
 1. Build and run the `web` service on your host (or pull a prebuilt image).
-2. Terminate TLS on a reverse proxy (Caddy / nginx / Traefik) and proxy to `localhost:8080` (or the published port).
+2. Terminate TLS on a reverse proxy (Caddy / nginx / Traefik) and proxy to `localhost:8088` (or the published port).
 3. When login lands: add `./api`, uncomment the `api` service in `docker-compose.yml`, and uncomment the `/api/` block in `client/nginx.conf`.
 
 ```bash
