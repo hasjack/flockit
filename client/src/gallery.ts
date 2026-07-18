@@ -32,6 +32,11 @@ const galleryItems: GalleryItem[] = [
   { src: '/flockit-promo4.jpg', alt: 'FlockIt screenshot 4' },
   { src: '/flockit-promo5.jpg', alt: 'FlockIt screenshot 5' },
   { src: '/flockit-promo6.jpg', alt: 'FlockIt screenshot 6' },
+  { src: '/flockit-promo7.jpg', alt: 'FlockIt screenshot 7' },
+  { src: '/flockit-promo8.jpg', alt: 'FlockIt screenshot 8' },
+  { src: '/flockit-promo9.jpg', alt: 'FlockIt screenshot 9' },
+  { src: '/flockit-promo10.jpg', alt: 'FlockIt screenshot 10' },
+  { src: '/flockit-promo12.png.jpg', alt: 'FlockIt screenshot 12' },
   { src: '/fab-example9.jpg', alt: 'FlockIt Fab screenshot 9' },
   { src: '/fab-example11.jpg', alt: 'FlockIt Fab screenshot 11' },
 ]
