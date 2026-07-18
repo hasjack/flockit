@@ -1,53 +1,55 @@
 # FlockIt
 
-Unreal Engine 5.8 demo project for the FlockIt flocking plugin.
+Demo project and documentation for the [FlockIt](https://flockit.xyz/) Unreal Engine flocking plugin.
 
-## Project
+**Live docs:** [https://flockit.xyz/](https://flockit.xyz/)
 
-Open `FlockIt.uproject` in UE 5.8. The demo is Blueprint-driven: `AFlockManager` actors, species presets, ISM rendering, and repulsor / panic interaction.
+## Repository layout
 
-| Path | Contents |
-|------|----------|
-| `Content/` | Maps, Blueprints (`BP_FlockIt`, player, camera) |
-| `Config/` | Project settings |
-| `client/` | Docs site (Vite + TypeScript) |
-| `docker-compose.yml` | Production container for the docs site |
+| Path | Description |
+|------|-------------|
+| `Content/` | Demo maps and Blueprints |
+| `Config/` | Unreal project settings |
+| `client/` | Documentation site (Vite + TypeScript) |
+| `docker-compose.yml` | Container setup for the docs site |
 
-## Plugin
+## Unreal project
 
-Install **FlockIt** from Fab.
+Requires **Unreal Engine 5.8** and the **FlockIt** plugin (from [Fab](https://www.fab.com/) or your project’s `Plugins/` folder).
 
-## Docs site (Docker)
+1. Open `FlockIt.uproject` in the editor.
+2. Enable the FlockIt plugin if prompted, then restart.
+3. Open a map under `Content/` and press Play.
 
-Static multi-page Vite site, served by nginx. Layout leaves room for a future login API on the same compose network.
+The demo is Blueprint-driven: place or open a Flock Manager, choose a spawn preset, and drive meshes with **Populate Instanced Organism Mesh** (see the docs site tutorials).
 
-### Local
+## Documentation site
+
+Source lives in `client/`. The site is a static multipage build served by nginx in production.
+
+### Development
 
 ```bash
-# from repo root
-docker compose up --build -d
-# open http://localhost:8088
+cd client
+npm install
+npm run dev
 ```
 
-Port override (default **8088** — avoid **8080**, used by `has-client` on the VPS):
+### Production (Docker)
+
+From the repository root:
+
+```bash
+docker compose up --build -d
+```
+
+The site is available at [http://localhost:8088](http://localhost:8088) by default. Override the host port if needed:
 
 ```bash
 FLOCKIT_PORT=8090 docker compose up --build -d
 ```
 
-Dev without Docker (hot reload):
+## Support
 
-```bash
-cd client && npm install && npm run dev
-```
-
-### Production sketch
-
-1. Build and run the `web` service on your host (or pull a prebuilt image).
-2. Terminate TLS on a reverse proxy (Caddy / nginx / Traefik) and proxy to `localhost:8088` (or the published port).
-3. When login lands: add `./api`, uncomment the `api` service in `docker-compose.yml`, and uncomment the `/api/` block in `client/nginx.conf`.
-
-```bash
-docker compose pull   # if using a registry image
-docker compose up -d --build
-```
+- Docs: [https://flockit.xyz/](https://flockit.xyz/)
+- Issues: [github.com/hasjack/flockit/issues](https://github.com/hasjack/flockit/issues)
