@@ -29,7 +29,6 @@ const galleryItems: GalleryItem[] = [
   { src: '/flockit-promo1.jpg', alt: 'FlockIt screenshot 1' },
   { src: '/flockit-promo2.jpg', alt: 'FlockIt screenshot 2' },
   { src: '/flockit-promo3.jpg', alt: 'FlockIt screenshot 3' },
-  { src: '/flockit-promo4.jpg', alt: 'FlockIt screenshot 4' },
   { src: '/flockit-promo5.jpg', alt: 'FlockIt screenshot 5' },
   { src: '/flockit-promo6.jpg', alt: 'FlockIt screenshot 6' },
   { src: '/flockit-promo7.jpg', alt: 'FlockIt screenshot 7' },
@@ -38,7 +37,6 @@ const galleryItems: GalleryItem[] = [
   { src: '/flockit-promo10.jpg', alt: 'FlockIt screenshot 10' },
   { src: '/flockit-promo12.png.jpg', alt: 'FlockIt screenshot 12' },
   { src: '/fab-example9.jpg', alt: 'FlockIt Fab screenshot 9' },
-  { src: '/fab-example11.jpg', alt: 'FlockIt Fab screenshot 11' },
 ]
 
 const videoIconSvg = `
