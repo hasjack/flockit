@@ -1,32 +1,37 @@
-# FlockIt
+# FlockIt docs site
 
-Demo project for the [FlockIt](https://flockit.xyz/) Unreal Engine flocking plugin.
+Source for [flockit.xyz](https://flockit.xyz/) — documentation for the [FlockIt](https://www.fab.com/listings/7c5fcbfb-ff80-4b4a-9b77-688af87f2f12) Unreal Engine plugin.
 
-**Docs:** [https://flockit.xyz/](https://flockit.xyz/)
+The Unreal **demo project** lives on the [`main`](https://github.com/hasjack/flockit/tree/main) branch of this repo.
 
-## Requirements
+## Layout
 
-- **Unreal Engine 5.8**
-- The **FlockIt** plugin ([Fab](https://www.fab.com/) or installed under this project’s `Plugins/` folder)
+| Path | Description |
+|------|-------------|
+| `client/` | Vite multipage site (TypeScript) |
+| `docker-compose.yml` | Production nginx container for the static build |
 
-## Getting started
+## Development
 
-1. Open `FlockIt.uproject` in Unreal Engine 5.8.
-2. Enable the FlockIt plugin if prompted, then restart the editor.
-3. Open a map under `Content/` (or `Content/Maps/`).
-4. Press **Play**.
+```bash
+cd client
+npm install
+npm run dev
+```
 
-## What’s in the project
+## Production (Docker)
 
-The demo is Blueprint-driven around **Flock Manager** (`AFlockManager`):
+From this branch root:
 
-- Place or open a manager Blueprint (for example `BP_FlockIt`).
-- Choose a **Spawn Preset** (or **Custom** and edit **Species**).
-- Leave **Spawn On Begin Play** on, or spawn from the Event Graph.
-- Drive organism meshes with **Populate Instanced Organism Mesh** on an Instanced Static Mesh component each tick.
+```bash
+docker compose up --build -d
+```
 
-For full API, settings, and step-by-step tutorials, see [flockit.xyz](https://flockit.xyz/).
+Default: [http://localhost:8088](http://localhost:8088). Override with `FLOCKIT_PORT`.
 
-## Support
+## Links
 
-[github.com/hasjack/flockit/issues](https://github.com/hasjack/flockit/issues)
+- Live docs: [https://flockit.xyz/](https://flockit.xyz/)
+- Fab: [Flock It](https://www.fab.com/listings/7c5fcbfb-ff80-4b4a-9b77-688af87f2f12)
+- Demo project: [main branch](https://github.com/hasjack/flockit/tree/main)
+- Issues: [github.com/hasjack/flockit/issues](https://github.com/hasjack/flockit/issues)

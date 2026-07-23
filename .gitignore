@@ -1,19 +1,6 @@
-# Client
+# Vite / Node
 client/node_modules/
 client/dist/
-!client/public/tutorials/*.mp4
-
-# UE local output — commit on a content branch when ready
-Saved/
-Intermediate/
-DerivedDataCache/
-Binaries/
-Build/
-
-# UE editor noise
-Content/Cinematics/Takes/
-Content/__ExternalActors__/
-Content/__ExternalObjects__/
 
 # OS / editor
 .DS_Store

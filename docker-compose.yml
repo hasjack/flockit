@@ -1,7 +1,4 @@
-# FlockIt docs site.
-# Today: static nginx (Vite build).
-# Midterm: add an `api` service for login and uncomment the /api proxy in
-# client/nginx.conf — keep both on the same compose network.
+# FlockIt docs site — static nginx (Vite build).
 services:
   web:
     build:
@@ -10,31 +7,10 @@ services:
     image: flockit-web:latest
     container_name: flockit-web
     ports:
-      # Host 8080 is taken by has-client on the VPS — use 8088 by default.
       - "${FLOCKIT_PORT:-8088}:80"
     restart: unless-stopped
     networks:
       - flockit
-
-  # --- midterm: login / account API ---
-  # api:
-  #   build:
-  #     context: ./api
-  #     dockerfile: Dockerfile
-  #   image: flockit-api:latest
-  #   container_name: flockit-api
-  #   environment:
-  #     PORT: 3000
-  #     # DATABASE_URL: ...
-  #     # JWT_SECRET: ...
-  #     # FRONTEND_ORIGIN: https://flockit.example.com
-  #   expose:
-  #     - "3000"
-  #   restart: unless-stopped
-  #   networks:
-  #     - flockit
-  #   depends_on:
-  #     - web
 
 networks:
   flockit:
