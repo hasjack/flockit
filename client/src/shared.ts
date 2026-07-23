@@ -1,4 +1,6 @@
 export const demoRepo = 'https://github.com/hasjack/flockit'
+export const fabListing =
+  'https://www.fab.com/listings/7c5fcbfb-ff80-4b4a-9b77-688af87f2f12'
 
 export function esc(text: string): string {
   return text
@@ -48,7 +50,7 @@ export function renderSidebar(items: SidebarItem[]): string {
       </nav>
       <div class="sidebar-footer">
         <a class="sidebar-link subtle" href="${demoRepo}" target="_blank" rel="noreferrer">Demo project</a>
-        <span class="sidebar-pill">Fab — coming soon</span>
+        <a class="sidebar-pill" href="${fabListing}" target="_blank" rel="noreferrer">Available on Fab</a>
       </div>
     </aside>
   `
