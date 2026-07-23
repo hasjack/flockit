@@ -2,12 +2,15 @@
 
 Demo project for the [FlockIt](https://flockit.xyz/) Unreal Engine flocking plugin.
 
-**Docs:** [https://flockit.xyz/](https://flockit.xyz/)
+**Docs:** [https://flockit.xyz/](https://flockit.xyz/)  
+**Fab:** [Flock It](https://www.fab.com/listings/7c5fcbfb-ff80-4b4a-9b77-688af87f2f12)
+
+The documentation site source lives on the [`client`](https://github.com/hasjack/flockit/tree/client) branch (not in this tree).
 
 ## Requirements
 
 - **Unreal Engine 5.8**
-- The **FlockIt** plugin ([Fab](https://www.fab.com/) or installed under this project’s `Plugins/` folder)
+- The **FlockIt** plugin ([Fab](https://www.fab.com/listings/7c5fcbfb-ff80-4b4a-9b77-688af87f2f12) or installed under this project’s `Plugins/` folder)
 
 ## Getting started
 
